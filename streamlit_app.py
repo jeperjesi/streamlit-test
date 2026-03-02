@@ -55,7 +55,7 @@ st.write("")          # gap between input boxes and dataframe
 st.dataframe(df, hide_index=True)
 
 st.write("")          # gap between dataframe and output
-st.write(st.secrets["INDURO_API_KEY"])          # gap between dataframe and output
+st.write("")          # gap between dataframe and output
 
 st.write("You selected:", script)
 st.write("You entered Parameter 1:", param1)
