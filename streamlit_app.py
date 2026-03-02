@@ -1,5 +1,4 @@
 import streamlit as st
-import Joseph_script_1
 import pandas as pd
 
 df = pd.DataFrame({
@@ -19,6 +18,7 @@ def run_script_b():
     # do work
 
 def run_script_c():
+    import Joseph_script_1
     st.write("Executing Joseph_script_1.py...")
     result = Joseph_script_1.run_task(param1)
     st.success("Script finished")
@@ -55,7 +55,7 @@ st.write("")          # gap between input boxes and dataframe
 st.dataframe(df, hide_index=True)
 
 st.write("")          # gap between dataframe and output
-st.write("")          # gap between dataframe and output
+st.write(st.secrets["INDURO_API_KEY"])          # gap between dataframe and output
 
 st.write("You selected:", script)
 st.write("You entered Parameter 1:", param1)
