@@ -2,6 +2,7 @@ import base64
 import hashlib
 import hmac
 import uuid
+import pandas as pd
 from datetime import datetime
 
 import requests
@@ -53,7 +54,7 @@ def get_fund_list(base_url, api_key, api_secret):
         print("x-hmac256-signature:", headers["x-hmac256-signature"])
         raise RuntimeError(f"HTTP {resp.status_code}: {resp.text[:1500]}")
 
-    return resp.json()
+    return pd.DataFrame(resp.json())
 
 
 if __name__ == "__main__":
