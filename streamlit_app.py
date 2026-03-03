@@ -7,7 +7,7 @@ master_fund_list_path = BASE_DIR / "data" / "master_fund_list.csv"
 script_params_list_path = BASE_DIR / "data" / "script_params_list.csv"
 
 #script parameters
-df_script_param_list = pd.read_csv(script_params_list_path)
+df_script_params_list = pd.read_csv(script_params_list_path)
 
 df_master_fund_list = pd.read_csv(master_fund_list_path)
 
@@ -28,10 +28,22 @@ def run_script_c():
 
 def run_script_d():
     import nav_get_trading_gain_loss
+    import nav_get_unrealized_tax_lot
+    import data_transform
+
     st.write("Executing nav_get_trading_gain_loss.py...")
-    report_date = param_date_1.strftime("%m-%d-%Y")
-    result = nav_get_trading_gain_loss.get_trading_gain_loss(st.secrets["NAV_BASE_URL"], st.secrets["INDURO_API_KEY"], st.secrets["INDURO_API_SECRET"], "175076", report_date)
-    st.dataframe(result.iloc[:, :30], hide_index=True)
+
+    report_date = param_date_1
+    report_date_str = report_date.strftime("%m-%d-%Y")
+    
+    df_nav_trading_gain_loss = nav_get_trading_gain_loss.get_trading_gain_loss(st.secrets["NAV_BASE_URL"], st.secrets["INDURO_API_KEY"], st.secrets["INDURO_API_SECRET"], "175076", report_date_str)
+    #df_nav_unrealized_tax_lot = nav_get_unrealized_tax_lot.get_trading_gain_loss(st.secrets["NAV_BASE_URL"], st.secrets["INDURO_API_KEY"], st.secrets["INDURO_API_SECRET"], "175076", report_date_str)
+    
+    df_trading_gain_loss_airtable = data_transform.nav_trading_gain_loss_to_airtable(df_nav_trading_gain_loss, report_date, "INDU")
+    #df_unrealized_market_value_airtable = data_transform.nav_unrealized_tax_lot_to_airtable(df_nav_unrealized_tax_lot, report_date, "INDU")
+
+    st.dataframe(df_trading_gain_loss_airtable, hide_index=True)
+    #st.dataframe(df_unrealized_market_value_airtable, hide_index=True)
 
 
 # UI items
