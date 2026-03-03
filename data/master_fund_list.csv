@@ -1,0 +1,3 @@
+fund_code,fund_name,nav_global_id,api_key,api_secret
+INDU,Induro LP,175076,INDURO_API_KEY,INDURO_API_SECRET
+RCMF,Readout Capital Master Fund LP,12345,READOUT_API_KEY,READOUT_API_SECRET
