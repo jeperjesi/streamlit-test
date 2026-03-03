@@ -64,4 +64,4 @@ if __name__ == "__main__":
 #    #API_ROOT = "ClientMasterData"
 #    #API_CALL = "GetFundList"
 
-    print(get_trading_gain_loss(BASE_URL, API_KEY, API_SECRET))
+    print(get_unrealized_tax_lot(BASE_URL, API_KEY, API_SECRET))
