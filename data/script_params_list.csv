@@ -1,0 +1,3 @@
+script_name,fund_name, fund_name_req, date_1, date_1_req, freetext_1, freetext_1_req, freetext_2, freetext_2_req, date_2, date_2_req
+nav_get_trading_gain_loss.py, Target fund, Yes, Portfolio date, Yes, N/A, No, N/A, No, N/A, No
+Joseph_script_1.py, N/A, No, N/A, No, URL of site, Yes, N/A, No, N/A, No
