@@ -28,9 +28,15 @@ def run_script_b():
 def run_script_c():
     import Joseph_script_1
     st.write("Executing Joseph_script_1.py...")
-    result = Joseph_script_1.run_task(param1)
+    result = Joseph_script_1.run_task(param_freetext_1)
     st.success("Script finished")
-    
+
+def run_script_d():
+    import nav_get_trading_gain_loss
+    st.write("Executing nav_get_trading_gain_loss.py...")
+    report_date = param_date_1.strftime("%m-%d-%Y")
+    result = nav_get_trading_gain_loss.get_trading_gain_loss(st.secrets["NAV_BASE_URL"], st.secrets["INDURO_API_KEY"], st.secrets["INDURO_API_SECRET"], "175076", report_date)
+    st.dataframe(result.iloc[:, :30], hide_index=True)
 
 
 # UI items
@@ -40,7 +46,7 @@ st.write(
     "Select script and enter parameters in input boxes below."
 )
 
-script_options = ["Pablo_script_1.py", "Pablo_script_2.py", "Joseph_script_1.py", "nav_get_fund_list.py"]
+script_options = ["Pablo_script_1.py", "Pablo_script_2.py", "Joseph_script_1.py", "nav_get_trading_gain_loss.py"]
 
 script = st.selectbox(
     "Select script to run",
@@ -102,3 +108,6 @@ if st.button("Run"):
     elif script == "Joseph_script_1.py":
         st.write("Running script " + script + " ...")
         run_script_c()
+    elif script == "nav_get_trading_gain_loss.py":
+        st.write("Running script " + script + " ...")
+        run_script_d()
