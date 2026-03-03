@@ -4,10 +4,10 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 master_fund_list_path = BASE_DIR / "data" / "master_fund_list.csv"
-script_param_list_path = BASE_DIR / "data" / "script_param_list.csv"
+script_params_list_path = BASE_DIR / "data" / "script_params_list.csv"
 
 #script parameters
-df_script_param_list = pd.read_csv(script_param_list_path)
+df_script_param_list = pd.read_csv(script_params_list_path)
 
 df_master_fund_list = pd.read_csv(master_fund_list_path)
 
@@ -80,7 +80,7 @@ st.write("")          # gap between input boxes and dataframe
 st.write("")          # gap between input boxes and dataframe
 
 st.write("Script parameters") 
-st.dataframe(df_script_param_list, hide_index=True)
+st.dataframe(df_script_params_list, hide_index=True)
 st.write("")
 st.write("API call reference") 
 st.dataframe(df_master_fund_list, hide_index=True)
