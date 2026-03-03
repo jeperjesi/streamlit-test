@@ -35,7 +35,7 @@ def nav_unrealized_tax_lot_to_airtable(df_nav_unrealized_tax_lot, report_date, f
 
     df_unrealized_market_value_grouped = (
         df_unrealized_market_value
-        .groupby(["Fund Code"],["Value Date"],["Identifier"],["Indentifier 2"],["Description"],["Currency"])
+        .groupby(["Fund Code", "Value Date", "Identifier", "Identifier 2", "Description", "Currency"], as_index=False)
         .agg(**{
             "Qty": ("Qty", "sum"),
             "Market Value (Base)": ("Market Value (Base)", "sum")

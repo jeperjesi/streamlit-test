@@ -30,7 +30,7 @@ def sign_request(method, pathAndQuery, body, apiKey, secret):
     }
 
 
-def get_trading_gain_loss(base_url, api_key, api_secret, nav_global_fund_id, report_date):
+def get_unrealized_tax_lot(base_url, api_key, api_secret, nav_global_fund_id, report_date):
     method = "GET"
     #path = "/navapigateway/api/v1/" + api_root + "/" + api_call
     path = "/navapigateway/api/v1/FundReportData/GetUnRealizedTaxLotForFund?globalFundID=" + nav_global_fund_id + "&reportDate=" + report_date
